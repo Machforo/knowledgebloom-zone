@@ -6,8 +6,11 @@ import { cn } from "@/lib/utils";
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Courses", href: "/courses" },
+  { name: "About Us", href: "/about" },
+  { name: "Class", href: "/courses" },
+  { name: "Master Class", href: "/masterclass" },
+  { name: "Blog", href: "/blog" },
+  { name: "Contact Us", href: "/contact" },
 ];
 
 export const Header = () => {

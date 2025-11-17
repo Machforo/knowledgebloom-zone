@@ -16,46 +16,64 @@ const Home = () => {
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-hero opacity-90" />
-          <div className="absolute inset-0">
-            <img
-              src={heroImage}
-              alt="Education"
-              className="w-full h-full object-cover mix-blend-overlay"
-            />
-          </div>
-          
-          <div className="relative mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
-            <div className="max-w-2xl">
-              <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl animate-fade-in">
-                Transform Your Career with AI & Digital Mastery—Fast
-              </h1>
-              <p className="mt-6 text-lg leading-8 text-white/90 animate-fade-in" style={{ animationDelay: "0.1s" }}>
-                Join thousands of learners mastering the skills that matter. Expert-led training in AI, Web Development, Data Analytics, and emerging technologies.
-              </p>
-              <div className="mt-10 flex items-center gap-x-6 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-                <Button asChild size="lg" className="shadow-lg hover:shadow-xl transition-shadow">
-                  <Link to="/courses">
-                    Explore Courses <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20">
-                  <Link to="/about">Learn More</Link>
-                </Button>
+        <section className="relative bg-[hsl(192,35%,50%)] overflow-hidden">
+          <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="max-w-2xl animate-fade-in">
+                <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                  Skills That Shape Your Future
+                </h1>
+                <p className="mt-4 text-lg text-white/90 font-medium">
+                  Students | Professionals | Entrepreneurs
+                </p>
+                <p className="mt-6 text-base leading-7 text-white/95">
+                  "Accessible, practical, and career-focused learning in Trading, Astrology, Digital Marketing, and Artificial Intelligence."
+                </p>
+                <div className="mt-10 animate-fade-in" style={{ animationDelay: "0.1s" }}>
+                  <Button asChild size="lg" className="bg-background text-foreground hover:bg-background/90 shadow-lg">
+                    <Link to="/courses">
+                      Explore Courses
+                    </Link>
+                  </Button>
+                </div>
+                <div className="mt-8 flex items-center gap-4 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+                  <span className="text-white/90 text-sm">Co-created with:</span>
+                  <div className="flex gap-2">
+                    <div className="w-12 h-12 bg-white/20 rounded flex items-center justify-center backdrop-blur-sm">
+                      <Award className="h-6 w-6 text-white" />
+                    </div>
+                    <div className="w-12 h-12 bg-white/20 rounded flex items-center justify-center backdrop-blur-sm">
+                      <Award className="h-6 w-6 text-white" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="relative lg:block hidden animate-fade-in" style={{ animationDelay: "0.3s" }}>
+                <img
+                  src={heroImage}
+                  alt="Professional"
+                  className="w-full h-[500px] object-cover rounded-lg"
+                />
               </div>
             </div>
           </div>
         </section>
 
-        {/* Features Section */}
+        {/* Mission Section */}
         <section className="py-24 sm:py-32 bg-muted/30">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl text-center mb-16">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Why Choose TrainingLobe?</h2>
-              <p className="mt-4 text-lg text-muted-foreground">
-                Accessible, practical, and career-focused learning designed for real-world success
+            <div className="mx-auto max-w-3xl text-center mb-16">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
+                One globe, one classroom—many journeys.
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Turn curiosity into mastery with expert-led, hands-on learning. Build skills that are practical, ethical, and future-ready—leaving with confidence, impact, and measurable results. Learn from real practitioners, apply knowledge instantly, and grow with a community that thrives on progress.
               </p>
+              <div className="mt-8">
+                <Button asChild size="lg" variant="outline">
+                  <Link to="/courses">Know more</Link>
+                </Button>
+              </div>
             </div>
             
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
