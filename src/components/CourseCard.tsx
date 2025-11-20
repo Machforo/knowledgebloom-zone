@@ -67,9 +67,12 @@ export const CourseCard = ({
         </div>
       </CardContent>
       
-      <CardFooter>
-        <Button asChild className="w-full">
+      <CardFooter className="flex gap-2">
+        <Button asChild className="flex-1" variant="outline">
           <Link to={`/courses/${id}`}>View Details</Link>
+        </Button>
+        <Button asChild className="flex-1">
+          <Link to={`/courses/${id}`}>Join Now</Link>
         </Button>
       </CardFooter>
     </Card>
