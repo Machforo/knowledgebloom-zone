@@ -39,11 +39,11 @@ const Home = () => {
                 <div className="mt-8 flex items-center gap-4 animate-fade-in" style={{ animationDelay: "0.2s" }}>
                   <span className="text-white/90 text-sm">Co-created with:</span>
                   <div className="flex gap-2">
-                    <div className="w-12 h-12 bg-white/20 rounded flex items-center justify-center backdrop-blur-sm">
-                      <Award className="h-6 w-6 text-white" />
+                    <div className="w-16 h-16 bg-white/20 rounded flex items-center justify-center backdrop-blur-sm">
+                      <Award className="h-8 w-8 text-white" />
                     </div>
-                    <div className="w-12 h-12 bg-white/20 rounded flex items-center justify-center backdrop-blur-sm">
-                      <Award className="h-6 w-6 text-white" />
+                    <div className="w-16 h-16 bg-white/20 rounded flex items-center justify-center backdrop-blur-sm">
+                      <Award className="h-8 w-8 text-white" />
                     </div>
                   </div>
                 </div>
@@ -51,8 +51,8 @@ const Home = () => {
               <div className="relative lg:block hidden animate-fade-in" style={{ animationDelay: "0.3s" }}>
                 <img
                   src={heroImage}
-                  alt="Professional"
-                  className="w-full h-[500px] object-cover rounded-lg"
+                  alt="Professional learning environment"
+                  className="w-full h-[500px] object-cover rounded-lg shadow-2xl"
                 />
               </div>
             </div>

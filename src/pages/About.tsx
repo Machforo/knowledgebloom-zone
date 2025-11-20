@@ -1,5 +1,7 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { Target, Eye, Heart } from "lucide-react";
 
 const About = () => {
@@ -13,30 +15,35 @@ const About = () => {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
               <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-                About TrainingLobe
+                About Us
               </h1>
               <p className="mt-6 text-lg leading-8 text-white/90">
-                Empowering careers through accessible, practical, and career-focused learning
+                Redefining learning with innovation and excellence
               </p>
             </div>
           </div>
         </section>
 
-        {/* Mission Section */}
+        {/* Founder Section */}
         <section className="py-24 sm:py-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
               <div>
-                <h2 className="text-3xl font-bold tracking-tight mb-6">Our Mission</h2>
+                <h2 className="text-3xl font-bold tracking-tight mb-6">Leadership & Vision</h2>
                 <p className="text-lg text-muted-foreground mb-4">
-                  At TrainingLobe, we believe that quality education should be accessible to everyone, regardless of their background or location. Our mission is to equip learners with expert-led training in AI, Web Development, Data Analytics, and emerging technologies.
+                  At TrainingLobe, we are driven by a vision to redefine learning with innovation and excellence. With years of expertise in technology and education, our leadership is committed to bridging the gap between academic knowledge and industry-ready skills.
                 </p>
                 <p className="text-lg text-muted-foreground mb-4">
-                  We focus on practical, hands-on learning that translates directly to real-world career opportunities. Every course is designed with input from industry professionals to ensure you're learning skills that employers actually need.
+                  Our team emphasizes practical knowledge, hands-on learning, and problem-solving, ensuring that learners gain real-world expertise and confidence to excel in their careers. We focus on delivering world-class training in AI, Digital Marketing, Trading, Astrology, and emerging technologies.
                 </p>
                 <p className="text-lg text-muted-foreground">
-                  Our commitment goes beyond just teaching technical skills—we're dedicated to helping you build a sustainable, fulfilling career in technology.
+                  True education goes beyond theory—it empowers learners to apply their knowledge to build meaningful solutions and achieve success in today's tech-driven world.
                 </p>
+                <div className="mt-8">
+                  <Button asChild size="lg">
+                    <Link to="/contact">Get in Touch</Link>
+                  </Button>
+                </div>
               </div>
 
               <div className="space-y-8">
