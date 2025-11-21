@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { Header } from "@/components/Header";
+import { MiniHeader } from "@/components/MiniHeader";
 import { Footer } from "@/components/Footer";
 import { courses } from "@/data/courses";
 import { Button } from "@/components/ui/button";
@@ -14,6 +15,7 @@ const CourseDetail = () => {
   if (!course) {
     return (
       <div className="min-h-screen flex flex-col">
+        <MiniHeader />
         <Header />
         <main className="flex-1 flex items-center justify-center">
           <div className="text-center">
@@ -33,6 +35,7 @@ const CourseDetail = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <MiniHeader />
       <Header />
       
       <main className="flex-1">

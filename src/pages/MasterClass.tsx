@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Header } from "@/components/Header";
+import { MiniHeader } from "@/components/MiniHeader";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { masterCourses, categories } from "@/data/masterCourses";
+import { Link } from "react-router-dom";
 
 const MasterClass = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -15,6 +17,7 @@ const MasterClass = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <MiniHeader />
       <Header />
       
       <main className="flex-1">
@@ -76,7 +79,9 @@ const MasterClass = () => {
                     <p className="mt-4 text-sm font-medium">Duration: {course.duration}</p>
                   </CardContent>
                   <CardFooter>
-                    <Button className="w-full" variant="outline">Learn More</Button>
+                    <Button asChild className="w-full" variant="outline">
+                      <Link to={`/master-class/${course.id}`}>Learn More</Link>
+                    </Button>
                   </CardFooter>
                 </Card>
               ))}
