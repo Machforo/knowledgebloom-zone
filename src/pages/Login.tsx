@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Header } from "@/components/Header";
+import { MiniHeader } from "@/components/MiniHeader";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -24,6 +25,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <MiniHeader />
       <Header />
       
       <main className="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-muted/30">

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Header } from "@/components/Header";
+import { MiniHeader } from "@/components/MiniHeader";
 import { Footer } from "@/components/Footer";
 import { CourseCard } from "@/components/CourseCard";
 import { courses } from "@/data/courses";
@@ -22,6 +23,7 @@ const Courses = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <MiniHeader />
       <Header />
       
       <main className="flex-1">

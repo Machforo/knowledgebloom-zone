@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
+import { MiniHeader } from "@/components/MiniHeader";
 import { Footer } from "@/components/Footer";
 import { CourseCard } from "@/components/CourseCard";
+import { Card, CardContent } from "@/components/ui/card";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { courses } from "@/data/courses";
-import { ArrowRight, BookOpen, Users, Award, TrendingUp } from "lucide-react";
+import { testimonials } from "@/data/testimonials";
+import { faqs } from "@/data/faqs";
+import { ArrowRight, BookOpen, Users, Award, TrendingUp, Star } from "lucide-react";
 import heroImage from "@/assets/hero-education.jpg";
 
 const Home = () => {
@@ -12,6 +17,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <MiniHeader />
       <Header />
       
       <main className="flex-1">
@@ -151,6 +157,73 @@ const Home = () => {
                 </Link>
               </Button>
             </div>
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <section className="py-24 sm:py-32 bg-muted/30">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto max-w-2xl text-center mb-16">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Student Testimonials at TrainingLobe</h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                Hear from students who transformed their careers with our training
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {testimonials.map((testimonial) => (
+                <Card key={testimonial.id} className="bg-card shadow-card hover:shadow-hover transition-all">
+                  <CardContent className="pt-6">
+                    <div className="flex items-center gap-4 mb-4">
+                      <img
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        className="w-16 h-16 rounded-full object-cover"
+                      />
+                      <div>
+                        <h3 className="font-semibold">{testimonial.name}</h3>
+                        <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-1 mb-3">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                      ))}
+                    </div>
+                    <p className="text-muted-foreground leading-relaxed">{testimonial.content}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-24 sm:py-32">
+          <div className="mx-auto max-w-3xl px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Frequently Asked Questions</h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                Find answers to common questions about our courses
+              </p>
+            </div>
+            
+            <Accordion type="single" collapsible className="space-y-4">
+              {faqs.map((faq, index) => (
+                <AccordionItem 
+                  key={faq.id} 
+                  value={`item-${index}`}
+                  className="bg-card rounded-lg border px-6"
+                >
+                  <AccordionTrigger className="text-left font-semibold hover:no-underline">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </section>
 

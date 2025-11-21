@@ -1,14 +1,17 @@
 import { Header } from "@/components/Header";
+import { MiniHeader } from "@/components/MiniHeader";
 import { Footer } from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, User } from "lucide-react";
 import { blogPosts } from "@/data/blogPosts";
+import { Link } from "react-router-dom";
 
 const Blog = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <MiniHeader />
       <Header />
       
       <main className="flex-1">
@@ -65,7 +68,9 @@ const Blog = () => {
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Button className="w-full" variant="outline">Read More →</Button>
+                    <Button asChild className="w-full" variant="outline">
+                      <Link to={`/blog/${post.id}`}>Read More →</Link>
+                    </Button>
                   </CardFooter>
                 </Card>
               ))}

@@ -1,12 +1,16 @@
 import { Header } from "@/components/Header";
+import { MiniHeader } from "@/components/MiniHeader";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
-import { Target, Eye, Heart } from "lucide-react";
+import { Target, Eye, Heart, Lightbulb, Globe, Award as AwardIcon, Shield, TrendingUp, Users } from "lucide-react";
+import { experts } from "@/data/experts";
 
 const About = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <MiniHeader />
       <Header />
       
       <main className="flex-1">
@@ -29,15 +33,18 @@ const About = () => {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
               <div>
-                <h2 className="text-3xl font-bold tracking-tight mb-6">Leadership & Vision</h2>
+                <div className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+                  Leadership & Vision
+                </div>
+                <h2 className="text-3xl font-bold tracking-tight mb-6">Message from Our Founder</h2>
                 <p className="text-lg text-muted-foreground mb-4">
-                  At TrainingLobe, we are driven by a vision to redefine learning with innovation and excellence. With years of expertise in technology and education, our leadership is committed to bridging the gap between academic knowledge and industry-ready skills.
+                  At TrainingLobe, under visionary leadership, we are driven by a mission to transform education through innovation and excellence. With years of rich experience in the fields of technology and learning, we believe in bridging the gap between academic knowledge and real-world industry requirements.
                 </p>
                 <p className="text-lg text-muted-foreground mb-4">
-                  Our team emphasizes practical knowledge, hands-on learning, and problem-solving, ensuring that learners gain real-world expertise and confidence to excel in their careers. We focus on delivering world-class training in AI, Digital Marketing, Trading, Astrology, and emerging technologies.
+                  Our philosophy emphasizes hands-on practice, problem-solving, and cultivating a mindset of continuous learning. We strongly believe that true education goes beyond theory, empowering learners to apply their knowledge to build meaningful solutions.
                 </p>
                 <p className="text-lg text-muted-foreground">
-                  True education goes beyond theory—it empowers learners to apply their knowledge to build meaningful solutions and achieve success in today's tech-driven world.
+                  Under this guidance, TrainingLobe has grown into a platform that equips learners with expert-led training in AI, Web Development, Data Analytics, and emerging technologies—preparing them for success in today's fast-paced digital world.
                 </p>
                 <div className="mt-8">
                   <Button asChild size="lg">
@@ -46,103 +53,157 @@ const About = () => {
                 </div>
               </div>
 
-              <div className="space-y-8">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                      <Target className="h-6 w-6" />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Career-Focused</h3>
-                    <p className="text-muted-foreground">
-                      Every course is designed to give you job-ready skills that employers value. We track industry trends to keep our curriculum relevant.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-secondary text-secondary-foreground">
-                      <Eye className="h-6 w-6" />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Practical Learning</h3>
-                    <p className="text-muted-foreground">
-                      Learn by doing with hands-on projects, real-world case studies, and practical exercises that reinforce your understanding.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent text-accent-foreground">
-                      <Heart className="h-6 w-6" />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Student Success</h3>
-                    <p className="text-muted-foreground">
-                      Your success is our success. We provide ongoing support, mentorship, and career guidance throughout your learning journey.
-                    </p>
-                  </div>
-                </div>
+              <div className="relative">
+                <img
+                  src="/placeholder.svg"
+                  alt="Founder"
+                  className="w-full h-[500px] object-cover rounded-lg shadow-2xl"
+                />
               </div>
             </div>
           </div>
         </section>
 
-        {/* Values Section */}
+        {/* Meet Our Experts */}
         <section className="py-24 sm:py-32 bg-muted/30">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center mb-16">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Our Values</h2>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Meet Our Experts at TrainingLobe</h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                The principles that guide everything we do
+                Learn from industry leaders with decades of combined experience
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {experts.map((expert) => (
+                <Card key={expert.id} className="overflow-hidden hover:shadow-hover transition-shadow">
+                  <div className="h-64 overflow-hidden">
+                    <img
+                      src={expert.image}
+                      alt={expert.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <CardContent className="pt-6">
+                    <h3 className="text-xl font-bold mb-2">{expert.name}</h3>
+                    <p className="text-sm text-primary font-medium mb-4">{expert.title}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{expert.bio}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Mission & Vision */}
+        <section className="py-24 sm:py-32">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto max-w-2xl text-center mb-16">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Our Mission & Vision</h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                Guiding principles that drive everything we do
               </p>
             </div>
 
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              <div className="bg-card p-8 rounded-xl shadow-card">
-                <h3 className="text-xl font-semibold mb-3">Excellence</h3>
-                <p className="text-muted-foreground">
-                  We maintain the highest standards in course quality, instructor expertise, and student support.
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 mb-16">
+              <Card className="bg-card shadow-card p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 bg-primary/10 rounded-lg">
+                    <Target className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold">Our Mission</h3>
+                </div>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  Our mission at TrainingLobe is to make quality education accessible, practical, and future-ready. We are dedicated to bridging the gap between theoretical knowledge and industry skills by offering hands-on, expert-led training.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  We aim to empower students, professionals, and lifelong learners to adapt to emerging technologies such as Artificial Intelligence, Data Analytics, and Web Development. By nurturing innovation, curiosity, and problem-solving abilities, we prepare our learners to lead tomorrow's digital transformation.
+                </p>
+              </Card>
+
+              <Card className="bg-card shadow-card p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 bg-secondary/10 rounded-lg">
+                    <Eye className="h-8 w-8 text-secondary" />
+                  </div>
+                  <h3 className="text-2xl font-bold">Our Vision</h3>
+                </div>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  We envision a future where education breaks boundaries—reaching every individual, regardless of their background or location. Our vision is to create a global learning ecosystem that enables learners to access cutting-edge knowledge and unlock their potential.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  TrainingLobe aspires to become a trusted hub of excellence, where innovation meets education, and where learners contribute to shaping industries, building solutions, and driving progress on a global scale.
+                </p>
+              </Card>
+            </div>
+
+            {/* Core Values */}
+            <div className="mx-auto max-w-2xl text-center mb-12">
+              <h3 className="text-2xl font-bold">Our Core Values</h3>
+            </div>
+
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="bg-card p-6 rounded-xl shadow-card text-center">
+                <Lightbulb className="h-10 w-10 text-primary mx-auto mb-4" />
+                <h4 className="font-semibold mb-2">Innovation</h4>
+                <p className="text-sm text-muted-foreground">
+                  Exploring new tools and methods for engaging, future-ready learning
                 </p>
               </div>
 
-              <div className="bg-card p-8 rounded-xl shadow-card">
-                <h3 className="text-xl font-semibold mb-3">Accessibility</h3>
-                <p className="text-muted-foreground">
-                  Quality education should be available to everyone. We offer flexible learning options and financial aid.
+              <div className="bg-card p-6 rounded-xl shadow-card text-center">
+                <Globe className="h-10 w-10 text-primary mx-auto mb-4" />
+                <h4 className="font-semibold mb-2">Accessibility</h4>
+                <p className="text-sm text-muted-foreground">
+                  Making high-quality training available with flexible schedules
                 </p>
               </div>
 
-              <div className="bg-card p-8 rounded-xl shadow-card">
-                <h3 className="text-xl font-semibold mb-3">Innovation</h3>
-                <p className="text-muted-foreground">
-                  We continuously update our curriculum to reflect the latest industry trends and technologies.
+              <div className="bg-card p-6 rounded-xl shadow-card text-center">
+                <AwardIcon className="h-10 w-10 text-primary mx-auto mb-4" />
+                <h4 className="font-semibold mb-2">Excellence</h4>
+                <p className="text-sm text-muted-foreground">
+                  Expert-led programs with real-world projects and mentorship
                 </p>
               </div>
 
-              <div className="bg-card p-8 rounded-xl shadow-card">
-                <h3 className="text-xl font-semibold mb-3">Community</h3>
-                <p className="text-muted-foreground">
-                  Learning is better together. We foster a supportive community where students help each other grow.
+              <div className="bg-card p-6 rounded-xl shadow-card text-center">
+                <Heart className="h-10 w-10 text-primary mx-auto mb-4" />
+                <h4 className="font-semibold mb-2">Integrity</h4>
+                <p className="text-sm text-muted-foreground">
+                  Operating with honesty in a trustworthy learning environment
                 </p>
               </div>
 
-              <div className="bg-card p-8 rounded-xl shadow-card">
-                <h3 className="text-xl font-semibold mb-3">Integrity</h3>
-                <p className="text-muted-foreground">
-                  We're transparent about what our courses offer and committed to delivering on our promises.
+              <div className="bg-card p-6 rounded-xl shadow-card text-center">
+                <TrendingUp className="h-10 w-10 text-primary mx-auto mb-4" />
+                <h4 className="font-semibold mb-2">Growth</h4>
+                <p className="text-sm text-muted-foreground">
+                  Encouraging adaptability, critical thinking, and leadership
                 </p>
               </div>
 
-              <div className="bg-card p-8 rounded-xl shadow-card">
-                <h3 className="text-xl font-semibold mb-3">Impact</h3>
-                <p className="text-muted-foreground">
-                  We measure success by the positive impact we have on our students' careers and lives.
+              <div className="bg-card p-6 rounded-xl shadow-card text-center">
+                <Shield className="h-10 w-10 text-primary mx-auto mb-4" />
+                <h4 className="font-semibold mb-2">Knowledge</h4>
+                <p className="text-sm text-muted-foreground">
+                  Providing practical insights and industry trends
+                </p>
+              </div>
+
+              <div className="bg-card p-6 rounded-xl shadow-card text-center">
+                <Target className="h-10 w-10 text-primary mx-auto mb-4" />
+                <h4 className="font-semibold mb-2">Leadership</h4>
+                <p className="text-sm text-muted-foreground">
+                  Nurturing decision-making and strategic skills
+                </p>
+              </div>
+
+              <div className="bg-card p-6 rounded-xl shadow-card text-center">
+                <Users className="h-10 w-10 text-primary mx-auto mb-4" />
+                <h4 className="font-semibold mb-2">Collaboration</h4>
+                <p className="text-sm text-muted-foreground">
+                  Driving innovation through teamwork and community
                 </p>
               </div>
             </div>
@@ -150,7 +211,7 @@ const About = () => {
         </section>
 
         {/* Stats Section */}
-        <section className="py-24 sm:py-32">
+        <section className="py-24 sm:py-32 bg-muted/30">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
               <div className="text-center">

@@ -8,7 +8,9 @@ import About from "./pages/About";
 import Courses from "./pages/Courses";
 import CourseDetail from "./pages/CourseDetail";
 import MasterClass from "./pages/MasterClass";
+import MasterCourseDetail from "./pages/MasterCourseDetail";
 import Blog from "./pages/Blog";
+import BlogDetail from "./pages/BlogDetail";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -27,8 +29,10 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/courses/:id" element={<CourseDetail />} />
-          <Route path="/masterclass" element={<MasterClass />} />
+          <Route path="/master-class" element={<MasterClass />} />
+          <Route path="/master-class/:id" element={<MasterCourseDetail />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
