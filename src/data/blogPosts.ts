@@ -1,3 +1,7 @@
+import digitalMarketingImg from "@/assets/digital-marketing-blog.jpg";
+import aiTrendsImg from "@/assets/ai-trends-blog.jpg";
+import careerSkillsImg from "@/assets/career-skills-blog.jpg";
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -18,7 +22,7 @@ export const blogPosts: BlogPost[] = [
     date: "Aug 22, 2025",
     readTime: "5 min read",
     category: "Digital Marketing",
-    image: "/placeholder.svg"
+    image: digitalMarketingImg
   },
   {
     id: "startups-scale-2025",
@@ -28,7 +32,7 @@ export const blogPosts: BlogPost[] = [
     date: "Aug 20, 2025",
     readTime: "6 min read",
     category: "Business",
-    image: "/placeholder.svg"
+    image: careerSkillsImg
   },
   {
     id: "ai-tools-transforming-business",
@@ -38,7 +42,7 @@ export const blogPosts: BlogPost[] = [
     date: "Aug 18, 2025",
     readTime: "7 min read",
     category: "Technology",
-    image: "/placeholder.svg"
+    image: aiTrendsImg
   },
   {
     id: "future-of-creativity",
@@ -48,7 +52,7 @@ export const blogPosts: BlogPost[] = [
     date: "Aug 20, 2025",
     readTime: "8 min read",
     category: "AI & Creativity",
-    image: "/placeholder.svg"
+    image: aiTrendsImg
   },
   {
     id: "wisdom-of-astrology",
@@ -58,7 +62,7 @@ export const blogPosts: BlogPost[] = [
     date: "Aug 19, 2025",
     readTime: "6 min read",
     category: "Astrology",
-    image: "/placeholder.svg"
+    image: digitalMarketingImg
   },
   {
     id: "career-growth-strategies",
@@ -68,6 +72,6 @@ export const blogPosts: BlogPost[] = [
     date: "Aug 17, 2025",
     readTime: "5 min read",
     category: "Career",
-    image: "/placeholder.svg"
+    image: careerSkillsImg
   }
 ];

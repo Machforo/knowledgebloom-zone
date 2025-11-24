@@ -1,3 +1,8 @@
+import masterAiImg from "@/assets/master-ai.jpg";
+import masterMarketingImg from "@/assets/master-marketing.jpg";
+import masterTradingImg from "@/assets/master-trading.jpg";
+import masterAstrologyImg from "@/assets/master-astrology.jpg";
+
 export interface MasterCourse {
   id: string;
   title: string;
@@ -16,7 +21,7 @@ export const masterCourses: MasterCourse[] = [
     description: "Learn how to leverage AI agents to automate and enhance your marketing strategies. Perfect for beginners looking to understand AI applications in business.",
     instructor: "TrainingLobe",
     category: "AI",
-    image: "/placeholder.svg",
+    image: masterAiImg,
     price: "Free",
     duration: "3 Months"
   },
@@ -26,7 +31,7 @@ export const masterCourses: MasterCourse[] = [
     description: "Discover the power of AI agents without any technical background. Learn practical applications that can transform your workflow.",
     instructor: "TrainingLobe",
     category: "AI",
-    image: "/placeholder.svg",
+    image: masterMarketingImg,
     price: "Free",
     duration: "Self-paced"
   },
@@ -36,7 +41,7 @@ export const masterCourses: MasterCourse[] = [
     description: "Master the latest digital marketing strategies to attract, engage, and retain customers in today's competitive landscape.",
     instructor: "TrainingLobe",
     category: "Marketing",
-    image: "/placeholder.svg",
+    image: masterTradingImg,
     price: "Free",
     duration: "4 Weeks"
   },
@@ -46,7 +51,7 @@ export const masterCourses: MasterCourse[] = [
     description: "Learn how to create a powerful business presence on Facebook and leverage its tools for maximum reach and engagement.",
     instructor: "TrainingLobe",
     category: "Marketing",
-    image: "/placeholder.svg",
+    image: masterMarketingImg,
     price: "Free",
     duration: "3 Weeks"
   },
@@ -56,7 +61,7 @@ export const masterCourses: MasterCourse[] = [
     description: "Discover effective YouTube marketing strategies tailored for small businesses to grow their audience and brand.",
     instructor: "TrainingLobe",
     category: "Marketing",
-    image: "/placeholder.svg",
+    image: masterMarketingImg,
     price: "Free",
     duration: "4 Weeks"
   },
@@ -66,7 +71,7 @@ export const masterCourses: MasterCourse[] = [
     description: "Deep dive into Meta's analytics tools to understand your audience and optimize your marketing campaigns.",
     instructor: "TrainingLobe",
     category: "Marketing",
-    image: "/placeholder.svg",
+    image: masterMarketingImg,
     price: "Free",
     duration: "2 Weeks"
   },
@@ -76,7 +81,7 @@ export const masterCourses: MasterCourse[] = [
     description: "Explore the ancient practice of medical astrology and its applications in understanding health patterns.",
     instructor: "TrainingLobe",
     category: "Astrology",
-    image: "/placeholder.svg",
+    image: masterAstrologyImg,
     price: "Free",
     duration: "6 Weeks"
   },
@@ -86,7 +91,7 @@ export const masterCourses: MasterCourse[] = [
     description: "Learn contemporary approaches to astrology and how to apply them in modern life contexts.",
     instructor: "TrainingLobe",
     category: "Astrology",
-    image: "/placeholder.svg",
+    image: masterAstrologyImg,
     price: "Free",
     duration: "8 Weeks"
   },
@@ -96,7 +101,7 @@ export const masterCourses: MasterCourse[] = [
     description: "Master the systematic approach of Paddhati astrology for accurate predictions and insights.",
     instructor: "TrainingLobe",
     category: "Astrology",
-    image: "/placeholder.svg",
+    image: masterAstrologyImg,
     price: "Free",
     duration: "10 Weeks"
   },
@@ -106,7 +111,7 @@ export const masterCourses: MasterCourse[] = [
     description: "Learn the basics of stock trading, market analysis, and investment strategies from experienced traders.",
     instructor: "TrainingLobe",
     category: "Trading",
-    image: "/placeholder.svg",
+    image: masterTradingImg,
     price: "Free",
     duration: "5 Weeks"
   }
