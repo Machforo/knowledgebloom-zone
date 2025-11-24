@@ -1,3 +1,8 @@
+import aiCourseImg from "@/assets/ai-course.jpg";
+import webDevCourseImg from "@/assets/web-dev-course.jpg";
+import dataAnalyticsCourseImg from "@/assets/data-analytics-course.jpg";
+import digitalMarketingImg from "@/assets/digital-marketing-blog.jpg";
+
 export interface Course {
   id: string;
   title: string;
@@ -25,7 +30,7 @@ export const courses: Course[] = [
     level: "Intermediate",
     lessons: 48,
     rating: 4.9,
-    image: "/src/assets/ai-course.jpg",
+    image: aiCourseImg,
     category: "AI & ML",
     syllabus: [
       "Introduction to AI and ML Concepts",
@@ -56,7 +61,7 @@ export const courses: Course[] = [
     level: "Beginner",
     lessons: 64,
     rating: 4.8,
-    image: "/src/assets/web-dev-course.jpg",
+    image: webDevCourseImg,
     category: "Web Development",
     syllabus: [
       "HTML5 & CSS3 Fundamentals",
@@ -88,7 +93,7 @@ export const courses: Course[] = [
     level: "Intermediate",
     lessons: 40,
     rating: 4.7,
-    image: "/src/assets/data-analytics-course.jpg",
+    image: dataAnalyticsCourseImg,
     category: "Data Analytics",
     syllabus: [
       "Statistics for Data Analysis",
@@ -119,7 +124,7 @@ export const courses: Course[] = [
     level: "Beginner",
     lessons: 32,
     rating: 4.6,
-    image: "/src/assets/ai-course.jpg",
+    image: digitalMarketingImg,
     category: "Marketing",
     syllabus: [
       "Digital Marketing Fundamentals",
