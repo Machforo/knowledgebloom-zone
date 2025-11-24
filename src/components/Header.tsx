@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, GraduationCap } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/traininglobe-logo.webp";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -23,14 +24,12 @@ export const Header = () => {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
-          <Link to="/" className="-m-1.5 p-1.5 flex items-center gap-2 group">
-            <div className="relative">
-              <GraduationCap className="h-8 w-8 text-primary transition-transform group-hover:scale-110" />
-              <div className="absolute inset-0 blur-lg bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
-            <span className="text-xl font-bold bg-gradient-hero bg-clip-text text-transparent">
-              TrainingLobe
-            </span>
+          <Link to="/" className="-m-1.5 p-1.5 flex items-center group">
+            <img 
+              src={logo} 
+              alt="TrainingLobe Logo" 
+              className="h-12 w-auto transition-transform group-hover:scale-105"
+            />
           </Link>
         </div>
         
@@ -82,11 +81,12 @@ export const Header = () => {
           <div className="fixed inset-0 z-50" />
           <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-background px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-border/10">
             <div className="flex items-center justify-between">
-              <Link to="/" className="-m-1.5 p-1.5 flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
-                <GraduationCap className="h-8 w-8 text-primary" />
-                <span className="text-xl font-bold bg-gradient-hero bg-clip-text text-transparent">
-                  TrainingLobe
-                </span>
+              <Link to="/" className="-m-1.5 p-1.5 flex items-center" onClick={() => setMobileMenuOpen(false)}>
+                <img 
+                  src={logo} 
+                  alt="TrainingLobe Logo" 
+                  className="h-10 w-auto"
+                />
               </Link>
               <button
                 type="button"
