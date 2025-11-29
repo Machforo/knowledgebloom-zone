@@ -4,13 +4,12 @@ import { Header } from "@/components/Header";
 import { MiniHeader } from "@/components/MiniHeader";
 import { Footer } from "@/components/Footer";
 import { CourseCard } from "@/components/CourseCard";
-import { Card, CardContent } from "@/components/ui/card";
+import { HeroCarousel } from "@/components/HeroCarousel";
+import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { courses } from "@/data/courses";
-import { testimonials } from "@/data/testimonials";
 import { faqs } from "@/data/faqs";
-import { ArrowRight, BookOpen, Users, Award, TrendingUp, Star } from "lucide-react";
-import heroImage from "@/assets/hero-education.jpg";
+import { ArrowRight, BookOpen, Users, Award, TrendingUp } from "lucide-react";
 
 const Home = () => {
   const featuredCourses = courses.slice(0, 3);
@@ -55,11 +54,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="relative lg:block hidden animate-fade-in" style={{ animationDelay: "0.3s" }}>
-                <img
-                  src={heroImage}
-                  alt="Professional learning environment"
-                  className="w-full h-[500px] object-cover rounded-lg shadow-2xl"
-                />
+                <HeroCarousel />
               </div>
             </div>
           </div>
@@ -170,31 +165,7 @@ const Home = () => {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {testimonials.map((testimonial) => (
-                <Card key={testimonial.id} className="bg-card shadow-card hover:shadow-hover transition-all">
-                  <CardContent className="pt-6">
-                    <div className="flex items-center gap-4 mb-4">
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-16 h-16 rounded-full object-cover"
-                      />
-                      <div>
-                        <h3 className="font-semibold">{testimonial.name}</h3>
-                        <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                      </div>
-                    </div>
-                    <div className="flex gap-1 mb-3">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-primary text-primary" />
-                      ))}
-                    </div>
-                    <p className="text-muted-foreground leading-relaxed">{testimonial.content}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+            <TestimonialCarousel />
           </div>
         </section>
 
