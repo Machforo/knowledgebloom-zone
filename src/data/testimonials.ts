@@ -1,6 +1,9 @@
 import ashwinImg from "@/assets/ashwin-testimonial.jpg";
 import prachiImg from "@/assets/prachi-testimonial.jpg";
 import riteshImg from "@/assets/ritesh-testimonial.jpg";
+import rahulImg from "@/assets/rahul-testimonial.jpg";
+import snehaImg from "@/assets/sneha-testimonial.jpg";
+import amitImg from "@/assets/amit-testimonial.jpg";
 
 export interface Testimonial {
   id: string;
@@ -31,5 +34,26 @@ export const testimonials: Testimonial[] = [
     role: "Business Simulation Learner",
     image: riteshImg,
     content: "The interactive simulations and real-world examples taught me to make data-driven decisions and inspired me to think bigger about my career and technology. Highly recommended for anyone looking to upskill."
+  },
+  {
+    id: "4",
+    name: "Rahul Mehta",
+    role: "Digital Marketing Specialist",
+    image: rahulImg,
+    content: "The digital marketing course exceeded my expectations. The practical strategies and real campaign examples helped me land a promotion within 3 months. The instructors are knowledgeable and always available for guidance."
+  },
+  {
+    id: "5",
+    name: "Sneha Kapoor",
+    role: "Data Analytics Professional",
+    image: snehaImg,
+    content: "I transitioned from a non-tech background to data analytics thanks to TrainingLobe. The curriculum is well-structured, the projects are industry-relevant, and the support from mentors made all the difference."
+  },
+  {
+    id: "6",
+    name: "Amit Sharma",
+    role: "Trading & Investment Learner",
+    image: amitImg,
+    content: "Learning trading strategies from experienced professionals was invaluable. The course demystified the complexities of financial markets and gave me the confidence to start investing with a clear strategy."
   }
 ];

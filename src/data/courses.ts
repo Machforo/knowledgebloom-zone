@@ -2,6 +2,8 @@ import aiCourseImg from "@/assets/ai-course.jpg";
 import webDevCourseImg from "@/assets/web-dev-course.jpg";
 import dataAnalyticsCourseImg from "@/assets/data-analytics-course.jpg";
 import digitalMarketingImg from "@/assets/digital-marketing-blog.jpg";
+import cloudComputingImg from "@/assets/cloud-computing-aws.jpg";
+import cybersecurityImg from "@/assets/cybersecurity-essentials.jpg";
 
 export interface Course {
   id: string;
@@ -43,7 +45,7 @@ export const courses: Course[] = [
       "Capstone Project"
     ],
     instructor: "Dr. Sarah Chen",
-    price: "$599",
+    price: "₹599",
     learningOutcomes: [
       "Build and train machine learning models",
       "Implement neural networks using TensorFlow and PyTorch",
@@ -75,7 +77,7 @@ export const courses: Course[] = [
       "Final Capstone Project"
     ],
     instructor: "Michael Rodriguez",
-    price: "$799",
+    price: "₹799",
     learningOutcomes: [
       "Build responsive websites from scratch",
       "Develop full-stack web applications",
@@ -106,7 +108,7 @@ export const courses: Course[] = [
       "Data-Driven Decision Making"
     ],
     instructor: "Dr. Emily Watson",
-    price: "$549",
+    price: "₹549",
     learningOutcomes: [
       "Analyze complex datasets effectively",
       "Create compelling data visualizations",
@@ -137,7 +139,7 @@ export const courses: Course[] = [
       "Marketing Automation"
     ],
     instructor: "Jennifer Taylor",
-    price: "$449",
+    price: "₹449",
     learningOutcomes: [
       "Create effective digital marketing campaigns",
       "Optimize websites for search engines",
@@ -155,7 +157,7 @@ export const courses: Course[] = [
     level: "Intermediate",
     lessons: 42,
     rating: 4.8,
-    image: "/src/assets/web-dev-course.jpg",
+    image: cloudComputingImg,
     category: "Cloud & DevOps",
     syllabus: [
       "AWS Fundamentals and IAM",
@@ -168,7 +170,7 @@ export const courses: Course[] = [
       "AWS Certification Prep"
     ],
     instructor: "David Kumar",
-    price: "$649",
+    price: "₹649",
     learningOutcomes: [
       "Design scalable cloud architectures",
       "Deploy applications on AWS",
@@ -186,7 +188,7 @@ export const courses: Course[] = [
     level: "Intermediate",
     lessons: 45,
     rating: 4.7,
-    image: "/src/assets/data-analytics-course.jpg",
+    image: cybersecurityImg,
     category: "Cybersecurity",
     syllabus: [
       "Security Fundamentals",
@@ -199,7 +201,7 @@ export const courses: Course[] = [
       "Security Operations Center (SOC)"
     ],
     instructor: "Robert Chen",
-    price: "$699",
+    price: "₹699",
     learningOutcomes: [
       "Identify and mitigate security threats",
       "Perform security assessments",

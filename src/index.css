@@ -110,4 +110,13 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Reduce spacing above main headings */
+  h1, h2, h3 {
+    @apply scroll-mt-20;
+  }
+
+  section h2 {
+    @apply pt-2;
+  }
 }

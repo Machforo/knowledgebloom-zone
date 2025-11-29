@@ -3,14 +3,17 @@ import { Header } from "@/components/Header";
 import { MiniHeader } from "@/components/MiniHeader";
 import { Footer } from "@/components/Footer";
 import { courses } from "@/data/courses";
+import { getCourseFaqs } from "@/data/courseFaqs";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Clock, BookOpen, Star, ArrowLeft, Check, User } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const CourseDetail = () => {
   const { id } = useParams<{ id: string }>();
   const course = courses.find(c => c.id === id);
+  const faqs = getCourseFaqs(id || "");
 
   if (!course) {
     return (
@@ -104,10 +107,11 @@ const CourseDetail = () => {
           </div>
         </section>
 
-        {/* Course Content */}
-        <section className="py-24">
+        {/* Course Content with Fixed Sidebar */}
+        <section className="py-16">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Left Column - Scrollable Content */}
               <div className="lg:col-span-2 space-y-12">
                 {/* Learning Outcomes */}
                 <Card>
@@ -150,10 +154,88 @@ const CourseDetail = () => {
                     </ol>
                   </CardContent>
                 </Card>
+
+                {/* Instructor */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Meet Your Instructor</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex items-start gap-4">
+                      <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <User className="h-10 w-10 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-semibold mb-2">{course.instructor}</h3>
+                        <p className="text-muted-foreground">
+                          Expert instructor with years of experience in {course.category}. Passionate about teaching and helping students achieve their career goals.
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Who is this course for */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Who is this course for?</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-3">
+                      <li className="flex items-start gap-3">
+                        <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                        <span>Beginners looking to start their career in {course.category}</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                        <span>Professionals wanting to upgrade their skills</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                        <span>Students seeking practical, industry-relevant knowledge</span>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                {/* Sample Reviews */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Student Reviews</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    <div className="border-b pb-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="flex gap-1">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                          ))}
+                        </div>
+                        <span className="font-semibold">Amazing course!</span>
+                      </div>
+                      <p className="text-muted-foreground">
+                        "This course exceeded my expectations. The content was well-structured and the instructor explained everything clearly."
+                      </p>
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="flex gap-1">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                          ))}
+                        </div>
+                        <span className="font-semibold">Highly recommended</span>
+                      </div>
+                      <p className="text-muted-foreground">
+                        "Practical examples and hands-on projects made learning enjoyable. I can now apply these skills in my job."
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
 
-              {/* Sidebar */}
-              <div className="space-y-6">
+              {/* Right Column - Fixed Sidebar */}
+              <div className="lg:sticky lg:top-24 lg:self-start">
                 <Card>
                   <CardHeader>
                     <CardTitle>Course Details</CardTitle>
@@ -179,14 +261,42 @@ const CourseDetail = () => {
                       <div className="text-sm text-muted-foreground mb-1">Price</div>
                       <div className="text-2xl font-bold text-primary">{course.price}</div>
                     </div>
+                    <Button className="w-full" size="lg">
+                      Enroll in This Course
+                    </Button>
                   </CardContent>
                 </Card>
-
-                <Button className="w-full" size="lg">
-                  Enroll in This Course
-                </Button>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-muted/30">
+          <div className="mx-auto max-w-3xl px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold tracking-tight mb-4">Frequently Asked Questions</h2>
+              <p className="text-lg text-muted-foreground">
+                Common questions about this course
+              </p>
+            </div>
+            
+            <Accordion type="single" collapsible className="space-y-4">
+              {faqs.map((faq, index) => (
+                <AccordionItem 
+                  key={index} 
+                  value={`item-${index}`}
+                  className="bg-card rounded-lg border px-6"
+                >
+                  <AccordionTrigger className="text-left font-semibold hover:no-underline">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </section>
       </main>
