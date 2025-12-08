@@ -14,7 +14,178 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      contact_submissions: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          phone: string | null
+          subject: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+          phone?: string | null
+          subject?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          phone?: string | null
+          subject?: string | null
+        }
+        Relationships: []
+      }
+      courses: {
+        Row: {
+          course_type: Database["public"]["Enums"]["course_type"]
+          created_at: string
+          description: string | null
+          duration: string | null
+          id: string
+          image_url: string | null
+          instructor_bio: string | null
+          instructor_image: string | null
+          instructor_name: string | null
+          is_active: boolean | null
+          price: number | null
+          syllabus: Json | null
+          title: string
+          updated_at: string
+          what_you_learn: Json | null
+          who_is_for: Json | null
+        }
+        Insert: {
+          course_type?: Database["public"]["Enums"]["course_type"]
+          created_at?: string
+          description?: string | null
+          duration?: string | null
+          id?: string
+          image_url?: string | null
+          instructor_bio?: string | null
+          instructor_image?: string | null
+          instructor_name?: string | null
+          is_active?: boolean | null
+          price?: number | null
+          syllabus?: Json | null
+          title: string
+          updated_at?: string
+          what_you_learn?: Json | null
+          who_is_for?: Json | null
+        }
+        Update: {
+          course_type?: Database["public"]["Enums"]["course_type"]
+          created_at?: string
+          description?: string | null
+          duration?: string | null
+          id?: string
+          image_url?: string | null
+          instructor_bio?: string | null
+          instructor_image?: string | null
+          instructor_name?: string | null
+          is_active?: boolean | null
+          price?: number | null
+          syllabus?: Json | null
+          title?: string
+          updated_at?: string
+          what_you_learn?: Json | null
+          who_is_for?: Json | null
+        }
+        Relationships: []
+      }
+      enrollments: {
+        Row: {
+          course_id: string
+          created_at: string
+          email: string
+          id: string
+          message: string | null
+          name: string
+          phone: string
+          status: Database["public"]["Enums"]["enrollment_status"]
+          updated_at: string
+        }
+        Insert: {
+          course_id: string
+          created_at?: string
+          email: string
+          id?: string
+          message?: string | null
+          name: string
+          phone: string
+          status?: Database["public"]["Enums"]["enrollment_status"]
+          updated_at?: string
+        }
+        Update: {
+          course_id?: string
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string | null
+          name?: string
+          phone?: string
+          status?: Database["public"]["Enums"]["enrollment_status"]
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "enrollments_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      resources: {
+        Row: {
+          course_id: string | null
+          created_at: string
+          description: string | null
+          file_type: string | null
+          file_url: string
+          id: string
+          is_public: boolean | null
+          title: string
+        }
+        Insert: {
+          course_id?: string | null
+          created_at?: string
+          description?: string | null
+          file_type?: string | null
+          file_url: string
+          id?: string
+          is_public?: boolean | null
+          title: string
+        }
+        Update: {
+          course_id?: string | null
+          created_at?: string
+          description?: string | null
+          file_type?: string | null
+          file_url?: string
+          id?: string
+          is_public?: boolean | null
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "resources_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +194,8 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      course_type: "bootcamp" | "masterclass"
+      enrollment_status: "pending" | "approved" | "rejected" | "paid"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +322,9 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      course_type: ["bootcamp", "masterclass"],
+      enrollment_status: ["pending", "approved", "rejected", "paid"],
+    },
   },
 } as const
