@@ -25,6 +25,27 @@ export const EnrollmentForm = ({ courseId, courseTitle, courseType, trigger }: E
   });
   const { toast } = useToast();
 
+  const sendConfirmationEmail = async (name: string, email: string) => {
+    try {
+      const { error } = await supabase.functions.invoke("send-enrollment-confirmation", {
+        body: {
+          name,
+          email,
+          courseTitle,
+          courseType
+        }
+      });
+
+      if (error) {
+        console.error("Failed to send confirmation email:", error);
+      } else {
+        console.log("Confirmation email sent successfully");
+      }
+    } catch (err) {
+      console.error("Error sending confirmation email:", err);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -45,10 +66,13 @@ export const EnrollmentForm = ({ courseId, courseTitle, courseType, trigger }: E
         variant: "destructive"
       });
     } else {
+      // Send confirmation email
+      await sendConfirmationEmail(formData.name, formData.email);
+
       toast({
         title: "Enrollment Submitted!",
         description: courseType === "bootcamp" 
-          ? "Your enrollment request has been submitted. Our team will review and contact you for the payment process."
+          ? "Your enrollment request has been submitted. Check your email for confirmation and WhatsApp community link."
           : "You have been enrolled successfully! Check your email for the WhatsApp community link.",
       });
       setOpen(false);
