@@ -51,6 +51,9 @@ export const EnrollmentForm = ({ courseId, courseTitle, courseType, trigger, wha
     e.preventDefault();
     setLoading(true);
 
+    // Store WhatsApp link before async operations
+    const redirectToWhatsApp = whatsappLink;
+
     const { error } = await supabase.from("enrollments").insert({
       course_id: null,
       course_title: courseTitle,
@@ -71,12 +74,12 @@ export const EnrollmentForm = ({ courseId, courseTitle, courseType, trigger, wha
       return;
     }
 
-    // Send confirmation email
-    await sendConfirmationEmail(formData.name, formData.email);
+    // Send confirmation email (don't wait for it)
+    sendConfirmationEmail(formData.name, formData.email);
 
     toast({
       title: "Enrollment Submitted!",
-      description: whatsappLink 
+      description: redirectToWhatsApp 
         ? "Redirecting you to the WhatsApp community..."
         : courseType === "bootcamp" 
           ? "Your enrollment request has been submitted. Check your email for confirmation."
@@ -87,11 +90,9 @@ export const EnrollmentForm = ({ courseId, courseTitle, courseType, trigger, wha
     setFormData({ name: "", email: "", phone: "", message: "" });
     setLoading(false);
 
-    // Redirect to WhatsApp group if link provided
-    if (whatsappLink) {
-      setTimeout(() => {
-        window.open(whatsappLink, "_blank");
-      }, 500);
+    // Redirect to WhatsApp group if link provided - use location.href for better compatibility
+    if (redirectToWhatsApp) {
+      window.location.href = redirectToWhatsApp;
     }
   };
 
