@@ -37,14 +37,14 @@ interface Course {
 
 interface Enrollment {
   id: string;
-  course_id: string;
+  course_id: string | null;
+  course_title: string | null;
   name: string;
   email: string;
   phone: string;
   message: string;
   status: "pending" | "approved" | "rejected" | "paid";
   created_at: string;
-  courses?: { title: string; course_type: string };
 }
 
 interface ContactSubmission {
@@ -148,7 +148,7 @@ const Admin = () => {
   const fetchEnrollments = async () => {
     const { data } = await supabase
       .from("enrollments")
-      .select("*, courses(title, course_type)")
+      .select("*")
       .order("created_at", { ascending: false });
     if (data) setEnrollments(data as Enrollment[]);
   };
@@ -325,10 +325,10 @@ const Admin = () => {
                         <TableCell className="font-medium">{enrollment.name}</TableCell>
                         <TableCell>{enrollment.email}</TableCell>
                         <TableCell>{enrollment.phone}</TableCell>
-                        <TableCell>{enrollment.courses?.title || "-"}</TableCell>
+                        <TableCell>{enrollment.course_title || "-"}</TableCell>
                         <TableCell>
-                          <Badge variant={enrollment.courses?.course_type === "bootcamp" ? "default" : "secondary"}>
-                            {enrollment.courses?.course_type || "-"}
+                          <Badge variant="outline">
+                            Enrollment
                           </Badge>
                         </TableCell>
                         <TableCell>

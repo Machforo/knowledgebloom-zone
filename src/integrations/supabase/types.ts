@@ -103,7 +103,8 @@ export type Database = {
       }
       enrollments: {
         Row: {
-          course_id: string
+          course_id: string | null
+          course_title: string | null
           created_at: string
           email: string
           id: string
@@ -114,7 +115,8 @@ export type Database = {
           updated_at: string
         }
         Insert: {
-          course_id: string
+          course_id?: string | null
+          course_title?: string | null
           created_at?: string
           email: string
           id?: string
@@ -125,7 +127,8 @@ export type Database = {
           updated_at?: string
         }
         Update: {
-          course_id?: string
+          course_id?: string | null
+          course_title?: string | null
           created_at?: string
           email?: string
           id?: string
@@ -135,15 +138,7 @@ export type Database = {
           status?: Database["public"]["Enums"]["enrollment_status"]
           updated_at?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "enrollments_course_id_fkey"
-            columns: ["course_id"]
-            isOneToOne: false
-            referencedRelation: "courses"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
       }
       resources: {
         Row: {

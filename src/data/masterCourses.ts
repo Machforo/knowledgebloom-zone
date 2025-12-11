@@ -1,7 +1,10 @@
 import agentZeroImg from "@/assets/agent-zero-workshop.jpg";
+import astroNumerologyImg from "@/assets/astro-numerology.jpg";
 import masterMarketingImg from "@/assets/master-marketing.jpg";
 import masterTradingImg from "@/assets/master-trading.jpg";
 import masterAstrologyImg from "@/assets/master-astrology.jpg";
+import atharvImg from "@/assets/atharv-kumar.jpeg";
+import amardeepImg from "@/assets/amardeep-bajpai.jpeg";
 
 export interface Instructor {
   name: string;
@@ -44,14 +47,14 @@ export const masterCourses: MasterCourse[] = [
         name: "Atharv Kumar",
         title: "AI and Tech Lead, Webisdom",
         bio: "I lead technology at Webisdom, where we don't just talk about AI—we ship it. I've designed this masterclass to bridge the gap between business logic and AI implementation. I'm skipping the hype to show you exactly how we build internal tools and products.",
-        image: "/src/assets/atharv-kumar.jpeg",
+        image: atharvImg,
         linkedIn: "https://www.linkedin.com/in/atharv-kumar-270337222"
       },
       {
         name: "Amardeep Bajpai",
         title: "CEO, Webisdom & Digital Innovation Leader",
         bio: "A visionary leader who has scaled 5 startups to unicorns and advised 300+ global brands. Amardeep brings the 'CEO Perspective'—teaching you not just how to build AI, but how to build a business around AI.",
-        image: "/src/assets/amardeep-bajpai.jpeg",
+        image: amardeepImg,
         linkedIn: "https://www.linkedin.com/in/amardeepbajpai/"
       }
     ],
@@ -124,6 +127,88 @@ export const masterCourses: MasterCourse[] = [
       {
         question: "Will I receive a certificate?",
         answer: "Yes, all participants receive a certificate of completion."
+      }
+    ]
+  },
+  {
+    id: "astro-numerology-masterclass",
+    title: "Lo Shu Grid Numerology Masterclass: Unlock the Power of Numbers",
+    subtitle: "Learn the ancient art of numerology and discover how numbers influence every aspect of your life.",
+    description: "Learn about the hidden power of numbers and how numbers impact our lives in various ways. Our Lo Shu Grid Numerology Masterclass uses the most practical Lo Shu grid, teaching you how to interpret numerical patterns that influence key aspects of your life, including personality, relationships, and career. Perfect for both beginners and enthusiasts, this masterclass offers practical, real-world concepts of numerology.",
+    instructor: "Atharv Kumar & Amardeep Bajpai",
+    instructors: [
+      {
+        name: "Atharv Kumar",
+        title: "Numerology Expert & Tech Lead",
+        bio: "Combining ancient wisdom with modern understanding, Atharv brings a unique perspective to numerology education.",
+        image: atharvImg,
+        linkedIn: "https://www.linkedin.com/in/atharv-kumar-270337222"
+      },
+      {
+        name: "Amardeep Bajpai",
+        title: "CEO, Webisdom & Spiritual Guide",
+        bio: "A visionary leader with deep knowledge of mystical sciences, helping students unlock the power of numbers.",
+        image: amardeepImg,
+        linkedIn: "https://www.linkedin.com/in/amardeepbajpai/"
+      }
+    ],
+    category: "Numerology",
+    image: astroNumerologyImg,
+    price: "Free",
+    duration: "3 Hours",
+    date: "Coming Soon",
+    time: "TBA",
+    format: "Online / Interactive",
+    isComingSoon: false,
+    whatsappLink: "https://chat.whatsapp.com/E5TOAN12u9BGbkiMPQXrXg?mode=hqrt3",
+    syllabus: [
+      {
+        title: "Introduction to Lo Shu Grid",
+        duration: "45 Mins",
+        topics: [
+          "History and origins of Lo Shu Grid",
+          "Understanding the 3x3 magic square",
+          "The significance of numbers 1-9"
+        ]
+      },
+      {
+        title: "Creating Your Personal Chart",
+        duration: "60 Mins",
+        topics: [
+          "Calculating your birth date numbers",
+          "Plotting your Lo Shu Grid",
+          "Identifying missing and repeated numbers"
+        ]
+      },
+      {
+        title: "Interpretation & Application",
+        duration: "75 Mins",
+        topics: [
+          "Personality traits from your grid",
+          "Career guidance through numbers",
+          "Relationship compatibility basics"
+        ]
+      }
+    ],
+    whatYouLearn: [
+      "Create and read Lo Shu Grid charts",
+      "Understand the meaning of each number",
+      "Analyze personality through numerology",
+      "Apply numerology to daily decisions",
+      "Introduction to professional practice"
+    ],
+    faqs: [
+      {
+        question: "Do I need any prior knowledge?",
+        answer: "No, this masterclass is designed for complete beginners."
+      },
+      {
+        question: "Will I get study materials?",
+        answer: "Yes, all participants receive PDF worksheets and reference guides."
+      },
+      {
+        question: "Can I practice on others after this?",
+        answer: "Yes! You'll have the foundational knowledge to create charts for friends and family."
       }
     ]
   },
@@ -228,4 +313,4 @@ export const masterCourses: MasterCourse[] = [
   }
 ];
 
-export const categories = ["All", "AI", "Marketing", "Trading", "Astrology"];
+export const categories = ["All", "AI", "Numerology", "Marketing", "Trading", "Astrology"];
