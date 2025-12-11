@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 import { Header } from "@/components/Header";
 import { MiniHeader } from "@/components/MiniHeader";
 import { Footer } from "@/components/Footer";
-import { courses } from "@/data/courses";
+import { courses, Instructor } from "@/data/courses";
 import { getCourseFaqs } from "@/data/courseFaqs";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Clock, BookOpen, Star, ArrowLeft, Check, User } from "lucide-react";
+import { Clock, BookOpen, Star, ArrowLeft, Check, User, Linkedin } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { EnrollmentForm } from "@/components/EnrollmentForm";
@@ -104,6 +104,7 @@ const CourseDetail = () => {
     price: isDbCourse ? (dbCourse.course_type === "masterclass" ? "Free" : `₹${dbCourse.price}`) : staticCourse!.price,
     duration: isDbCourse ? dbCourse.duration : staticCourse!.duration,
     instructor: isDbCourse ? dbCourse.instructor_name : staticCourse!.instructor,
+    instructors: staticCourse?.instructors || [],
     instructorBio: isDbCourse ? dbCourse.instructor_bio : `Expert instructor with years of experience. Passionate about teaching and helping students achieve their career goals.`,
     instructorImage: isDbCourse ? dbCourse.instructor_image : null,
     category: isDbCourse ? (dbCourse.course_type === "bootcamp" ? "Bootcamp" : "Masterclass") : staticCourse!.category,
@@ -113,7 +114,8 @@ const CourseDetail = () => {
     whoIsFor: isDbCourse ? (dbCourse.who_is_for || []) : [`Beginners looking to start their career`, `Professionals wanting to upgrade their skills`, `Students seeking practical, industry-relevant knowledge`],
     rating: staticCourse?.rating || 4.8,
     lessons: staticCourse?.lessons || 24,
-    level: staticCourse?.level || "Intermediate"
+    level: staticCourse?.level || "Intermediate",
+    whatsappLink: staticCourse?.whatsappLink
   };
 
   return (
@@ -177,6 +179,7 @@ const CourseDetail = () => {
                     courseTitle={displayData.title} 
                     courseType={displayData.courseType}
                     trigger={<Button size="lg" variant="secondary">Enroll Now</Button>}
+                    whatsappLink={displayData.whatsappLink}
                   />
                 </div>
               </div>
@@ -244,27 +247,52 @@ const CourseDetail = () => {
                   </Card>
                 )}
 
-                {/* Instructor */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Meet Your Instructor</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-start gap-4">
-                      {displayData.instructorImage ? (
-                        <img src={displayData.instructorImage} alt={displayData.instructor} className="w-20 h-20 rounded-full object-cover flex-shrink-0" />
-                      ) : (
-                        <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <User className="h-10 w-10 text-primary" />
+                {/* Instructors */}
+                {displayData.instructors && displayData.instructors.length > 0 ? (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Meet Your Instructors</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-6">
+                      {displayData.instructors.map((instructor, index) => (
+                        <div key={index} className="flex items-start gap-4 pb-4 border-b last:border-0 last:pb-0">
+                          <img src={instructor.image} alt={instructor.name} className="w-20 h-20 rounded-full object-cover flex-shrink-0" />
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-1">
+                              <h3 className="text-xl font-semibold">{instructor.name}</h3>
+                              <a href={instructor.linkedIn} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80">
+                                <Linkedin className="h-5 w-5" />
+                              </a>
+                            </div>
+                            <p className="text-sm text-primary mb-2">{instructor.title}</p>
+                            <p className="text-muted-foreground text-sm">{instructor.bio}</p>
+                          </div>
                         </div>
-                      )}
-                      <div>
-                        <h3 className="text-xl font-semibold mb-2">{displayData.instructor}</h3>
-                        <p className="text-muted-foreground">{displayData.instructorBio}</p>
+                      ))}
+                    </CardContent>
+                  </Card>
+                ) : (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Meet Your Instructor</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex items-start gap-4">
+                        {displayData.instructorImage ? (
+                          <img src={displayData.instructorImage} alt={displayData.instructor} className="w-20 h-20 rounded-full object-cover flex-shrink-0" />
+                        ) : (
+                          <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                            <User className="h-10 w-10 text-primary" />
+                          </div>
+                        )}
+                        <div>
+                          <h3 className="text-xl font-semibold mb-2">{displayData.instructor}</h3>
+                          <p className="text-muted-foreground">{displayData.instructorBio}</p>
+                        </div>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                )}
 
                 {/* Who is this course for */}
                 <Card>
@@ -359,6 +387,7 @@ const CourseDetail = () => {
                       courseTitle={displayData.title} 
                       courseType={displayData.courseType}
                       trigger={<Button className="w-full" size="lg">Enroll in This Course</Button>}
+                      whatsappLink={displayData.whatsappLink}
                     />
                   </CardContent>
                 </Card>

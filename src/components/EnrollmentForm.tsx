@@ -52,7 +52,8 @@ export const EnrollmentForm = ({ courseId, courseTitle, courseType, trigger, wha
     setLoading(true);
 
     const { error } = await supabase.from("enrollments").insert({
-      course_id: courseId,
+      course_id: null,
+      course_title: courseTitle,
       name: formData.name,
       email: formData.email,
       phone: formData.phone,

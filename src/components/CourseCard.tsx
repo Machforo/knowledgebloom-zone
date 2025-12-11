@@ -14,6 +14,7 @@ interface CourseCardProps {
   rating: number;
   image: string;
   category: string;
+  isComingSoon?: boolean;
 }
 
 export const CourseCard = ({
@@ -26,9 +27,10 @@ export const CourseCard = ({
   rating,
   image,
   category,
+  isComingSoon = false,
 }: CourseCardProps) => {
   return (
-    <Card className="group overflow-hidden transition-all hover:shadow-hover">
+    <Card className={`group overflow-hidden transition-all hover:shadow-hover ${isComingSoon ? 'opacity-80' : ''}`}>
       <div className="relative overflow-hidden aspect-video">
         <img
           src={image}
@@ -38,6 +40,11 @@ export const CourseCard = ({
         <Badge className="absolute top-4 left-4 bg-primary text-primary-foreground">
           {category}
         </Badge>
+        {isComingSoon && (
+          <Badge className="absolute top-4 right-4 bg-orange-500 text-white">
+            Coming Soon
+          </Badge>
+        )}
       </div>
       
       <CardHeader>
@@ -68,12 +75,25 @@ export const CourseCard = ({
       </CardContent>
       
       <CardFooter className="flex gap-2">
-        <Button asChild className="flex-1" variant="outline">
-          <Link to={`/courses/${id}`}>View Details</Link>
-        </Button>
-        <Button asChild className="flex-1">
-          <Link to={`/courses/${id}`}>Join Now</Link>
-        </Button>
+        {isComingSoon ? (
+          <>
+            <Button className="flex-1" variant="outline" disabled>
+              Coming Soon
+            </Button>
+            <Button className="flex-1" disabled>
+              Notify Me
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button asChild className="flex-1" variant="outline">
+              <Link to={`/courses/${id}`}>View Details</Link>
+            </Button>
+            <Button asChild className="flex-1">
+              <Link to={`/courses/${id}`}>Join Now</Link>
+            </Button>
+          </>
+        )}
       </CardFooter>
     </Card>
   );
