@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge";
 import { masterCourses, categories } from "@/data/masterCourses";
 import { Link } from "react-router-dom";
+import { Clock } from "lucide-react";
 
 const MasterClass = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -58,13 +59,21 @@ const MasterClass = () => {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {filteredCourses.map((course) => (
-                <Card key={course.id} className="flex flex-col hover:shadow-hover transition-shadow">
+                <Card key={course.id} className={`flex flex-col hover:shadow-hover transition-shadow ${course.isComingSoon ? 'opacity-75' : ''}`}>
                   <div className="relative h-48 overflow-hidden rounded-t-lg">
                     <img
                       src={course.image}
                       alt={course.title}
-                      className="w-full h-full object-cover"
+                      className={`w-full h-full object-cover ${course.isComingSoon ? 'grayscale' : ''}`}
                     />
+                    {course.isComingSoon && (
+                      <div className="absolute inset-0 bg-background/60 flex items-center justify-center">
+                        <Badge variant="secondary" className="text-lg px-4 py-2 bg-primary text-primary-foreground">
+                          <Clock className="w-4 h-4 mr-2" />
+                          Coming Soon
+                        </Badge>
+                      </div>
+                    )}
                   </div>
                   <CardHeader>
                     <div className="flex items-center justify-between mb-2">
@@ -76,12 +85,20 @@ const MasterClass = () => {
                   </CardHeader>
                   <CardContent className="flex-1">
                     <p className="text-sm text-muted-foreground">{course.description}</p>
-                    <p className="mt-4 text-sm font-medium">Duration: {course.duration}</p>
+                    {course.date && !course.isComingSoon && (
+                      <p className="mt-4 text-sm font-medium text-primary">📅 {course.date}</p>
+                    )}
                   </CardContent>
                   <CardFooter>
-                    <Button asChild className="w-full" variant="outline">
-                      <Link to={`/master-class/${course.id}`}>Learn More</Link>
-                    </Button>
+                    {course.isComingSoon ? (
+                      <Button className="w-full" variant="outline" disabled>
+                        Coming Soon
+                      </Button>
+                    ) : (
+                      <Button asChild className="w-full" variant="outline">
+                        <Link to={`/master-class/${course.id}`}>Learn More</Link>
+                      </Button>
+                    )}
                   </CardFooter>
                 </Card>
               ))}

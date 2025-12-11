@@ -1,29 +1,131 @@
-import masterAiImg from "@/assets/master-ai.jpg";
+import agentZeroImg from "@/assets/agent-zero-workshop.jpg";
 import masterMarketingImg from "@/assets/master-marketing.jpg";
 import masterTradingImg from "@/assets/master-trading.jpg";
 import masterAstrologyImg from "@/assets/master-astrology.jpg";
 
+export interface Instructor {
+  name: string;
+  title: string;
+  bio: string;
+  image: string;
+  linkedIn: string;
+}
+
 export interface MasterCourse {
   id: string;
   title: string;
+  subtitle?: string;
   description: string;
   instructor: string;
+  instructors?: Instructor[];
   category: string;
   image: string;
   price: string;
   duration: string;
+  date?: string;
+  time?: string;
+  format?: string;
+  isComingSoon?: boolean;
+  syllabus?: { title: string; duration: string; topics: string[] }[];
+  whatYouLearn?: string[];
+  faqs?: { question: string; answer: string }[];
+  whatsappLink?: string;
 }
 
 export const masterCourses: MasterCourse[] = [
   {
-    id: "ai-agents-marketing",
-    title: "AI Agents for Marketing and Business",
-    description: "Learn how to leverage AI agents to automate and enhance your marketing strategies. Perfect for beginners looking to understand AI applications in business.",
-    instructor: "TrainingLobe",
+    id: "agent-zero-workshop",
+    title: "Agent Zero Workshop: Build Your First AI Agent from Scratch",
+    subtitle: "Stop chatting with AI. Start building with it. A 4-hour hands-on masterclass for developers and tech leaders to move from \"Prompting\" to \"Engineering.\"",
+    description: "Everyone uses ChatGPT. But less than 1% of professionals know how to orchestrate LLMs to perform autonomous tasks, call APIs, and automate complex workflows. In this masterclass, you won't just learn about basics of AI; you will open your laptop, set up your environment, connect to OpenAI, and build a functioning AI Agent that can work on your given tasks.",
+    instructor: "Atharv Kumar & Amardeep Bajpai",
+    instructors: [
+      {
+        name: "Atharv Kumar",
+        title: "AI and Tech Lead, Webisdom",
+        bio: "I lead technology at Webisdom, where we don't just talk about AI—we ship it. I've designed this masterclass to bridge the gap between business logic and AI implementation. I'm skipping the hype to show you exactly how we build internal tools and products.",
+        image: "/src/assets/atharv-kumar.jpeg",
+        linkedIn: "https://www.linkedin.com/in/atharv-kumar-270337222"
+      },
+      {
+        name: "Amardeep Bajpai",
+        title: "CEO, Webisdom & Digital Innovation Leader",
+        bio: "A visionary leader who has scaled 5 startups to unicorns and advised 300+ global brands. Amardeep brings the 'CEO Perspective'—teaching you not just how to build AI, but how to build a business around AI.",
+        image: "/src/assets/amardeep-bajpai.jpeg",
+        linkedIn: "https://www.linkedin.com/in/amardeepbajpai/"
+      }
+    ],
     category: "AI",
-    image: masterAiImg,
+    image: agentZeroImg,
     price: "Free",
-    duration: "3 Months"
+    duration: "4 Hours",
+    date: "20/12/2025 (Saturday) & 21/12/2025 (Sunday)",
+    time: "7:00 PM - 9:00 PM",
+    format: "Online / Hands-on Coding",
+    isComingSoon: false,
+    whatsappLink: "https://chat.whatsapp.com/E5TOAN12u9BGbkiMPQXrXg?mode=hqrt3",
+    syllabus: [
+      {
+        title: "Module 1: The New Stack",
+        duration: "30 Mins",
+        topics: [
+          "Anatomy of an Agent: Context, Memory, and Tools",
+          "Low-code orchestration for high-code logic",
+          "Setting up your Environment: API Keys"
+        ]
+      },
+      {
+        title: "Module 2: The Brain - Prompt Engineering for Engineers",
+        duration: "60 Mins",
+        topics: [
+          "System Prompts vs. User Prompts",
+          "Structured Outputs: Forcing the LLM to return JSON, not poetry",
+          "Lab: Building the logic layer of your agent"
+        ]
+      },
+      {
+        title: "Module 3: The Hands - Tool Use & Function Calling",
+        duration: "90 Mins",
+        topics: [
+          "Giving your AI agency: How to connect LLMs to the outside world",
+          "Building custom tools and integrations",
+          "Hands-on coding session"
+        ]
+      },
+      {
+        title: "Module 4: Deployment & Next Steps",
+        duration: "30 Mins",
+        topics: [
+          "Testing and debugging workflows",
+          "From Prototype to Production (A look at the Bootcamp)"
+        ]
+      }
+    ],
+    whatYouLearn: [
+      "Build a functioning AI Agent from scratch",
+      "Master Prompt Engineering for real-world applications",
+      "Connect LLMs to external APIs and tools",
+      "Understand the anatomy of AI Agents: Context, Memory, and Tools",
+      "Deploy and test your AI workflows"
+    ],
+    faqs: [
+      {
+        question: "Do I need to know Python/Coding?",
+        answer: "No, but you need technical literacy. We use Python but will touch on JSON and API structures."
+      },
+      {
+        question: "Is this a recorded video?",
+        answer: "No, this is live. You build alongside me."
+      },
+      {
+        question: "Do I need a paid OpenAI account?",
+        answer: "No, you will use free credits from Groq."
+      },
+      {
+        question: "Will I receive a certificate?",
+        answer: "Yes, all participants receive a certificate of completion."
+      }
+    ]
   },
   {
     id: "ai-agents-no-tech",
@@ -33,7 +135,8 @@ export const masterCourses: MasterCourse[] = [
     category: "AI",
     image: masterMarketingImg,
     price: "Free",
-    duration: "Self-paced"
+    duration: "Self-paced",
+    isComingSoon: true
   },
   {
     id: "digital-marketing-trends",
@@ -43,7 +146,8 @@ export const masterCourses: MasterCourse[] = [
     category: "Marketing",
     image: masterTradingImg,
     price: "Free",
-    duration: "4 Weeks"
+    duration: "4 Weeks",
+    isComingSoon: true
   },
   {
     id: "facebook-marketing",
@@ -53,7 +157,8 @@ export const masterCourses: MasterCourse[] = [
     category: "Marketing",
     image: masterMarketingImg,
     price: "Free",
-    duration: "3 Weeks"
+    duration: "3 Weeks",
+    isComingSoon: true
   },
   {
     id: "youtube-marketing",
@@ -63,7 +168,8 @@ export const masterCourses: MasterCourse[] = [
     category: "Marketing",
     image: masterMarketingImg,
     price: "Free",
-    duration: "4 Weeks"
+    duration: "4 Weeks",
+    isComingSoon: true
   },
   {
     id: "meta-analytics",
@@ -73,7 +179,8 @@ export const masterCourses: MasterCourse[] = [
     category: "Marketing",
     image: masterMarketingImg,
     price: "Free",
-    duration: "2 Weeks"
+    duration: "2 Weeks",
+    isComingSoon: true
   },
   {
     id: "medical-astrology",
@@ -83,7 +190,8 @@ export const masterCourses: MasterCourse[] = [
     category: "Astrology",
     image: masterAstrologyImg,
     price: "Free",
-    duration: "6 Weeks"
+    duration: "6 Weeks",
+    isComingSoon: true
   },
   {
     id: "modern-astrology",
@@ -93,7 +201,8 @@ export const masterCourses: MasterCourse[] = [
     category: "Astrology",
     image: masterAstrologyImg,
     price: "Free",
-    duration: "8 Weeks"
+    duration: "8 Weeks",
+    isComingSoon: true
   },
   {
     id: "paddhati-astrology",
@@ -103,7 +212,8 @@ export const masterCourses: MasterCourse[] = [
     category: "Astrology",
     image: masterAstrologyImg,
     price: "Free",
-    duration: "10 Weeks"
+    duration: "10 Weeks",
+    isComingSoon: true
   },
   {
     id: "stock-trading-basics",
@@ -113,7 +223,8 @@ export const masterCourses: MasterCourse[] = [
     category: "Trading",
     image: masterTradingImg,
     price: "Free",
-    duration: "5 Weeks"
+    duration: "5 Weeks",
+    isComingSoon: true
   }
 ];
 

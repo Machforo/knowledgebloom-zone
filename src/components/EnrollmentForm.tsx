@@ -12,9 +12,10 @@ interface EnrollmentFormProps {
   courseTitle: string;
   courseType: "bootcamp" | "masterclass";
   trigger?: React.ReactNode;
+  whatsappLink?: string;
 }
 
-export const EnrollmentForm = ({ courseId, courseTitle, courseType, trigger }: EnrollmentFormProps) => {
+export const EnrollmentForm = ({ courseId, courseTitle, courseType, trigger, whatsappLink }: EnrollmentFormProps) => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -65,21 +66,32 @@ export const EnrollmentForm = ({ courseId, courseTitle, courseType, trigger }: E
         description: "Failed to submit enrollment. Please try again.",
         variant: "destructive"
       });
-    } else {
-      // Send confirmation email
-      await sendConfirmationEmail(formData.name, formData.email);
-
-      toast({
-        title: "Enrollment Submitted!",
-        description: courseType === "bootcamp" 
-          ? "Your enrollment request has been submitted. Check your email for confirmation and WhatsApp community link."
-          : "You have been enrolled successfully! Check your email for the WhatsApp community link.",
-      });
-      setOpen(false);
-      setFormData({ name: "", email: "", phone: "", message: "" });
+      setLoading(false);
+      return;
     }
 
+    // Send confirmation email
+    await sendConfirmationEmail(formData.name, formData.email);
+
+    toast({
+      title: "Enrollment Submitted!",
+      description: whatsappLink 
+        ? "Redirecting you to the WhatsApp community..."
+        : courseType === "bootcamp" 
+          ? "Your enrollment request has been submitted. Check your email for confirmation."
+          : "You have been enrolled successfully! Check your email for details.",
+    });
+
+    setOpen(false);
+    setFormData({ name: "", email: "", phone: "", message: "" });
     setLoading(false);
+
+    // Redirect to WhatsApp group if link provided
+    if (whatsappLink) {
+      setTimeout(() => {
+        window.open(whatsappLink, "_blank");
+      }, 500);
+    }
   };
 
   return (
@@ -93,7 +105,9 @@ export const EnrollmentForm = ({ courseId, courseTitle, courseType, trigger }: E
           <DialogDescription>
             {courseType === "bootcamp" 
               ? "Fill in your details to request enrollment. Our team will contact you for payment."
-              : "Fill in your details to join this free masterclass."
+              : whatsappLink 
+                ? "Fill in your details to join this free masterclass. You'll be added to the WhatsApp community group."
+                : "Fill in your details to join this free masterclass."
             }
           </DialogDescription>
         </DialogHeader>
@@ -142,7 +156,7 @@ export const EnrollmentForm = ({ courseId, courseTitle, courseType, trigger }: E
           </div>
           <DialogFooter>
             <Button type="submit" disabled={loading} className="w-full">
-              {loading ? "Submitting..." : "Submit Enrollment"}
+              {loading ? "Submitting..." : whatsappLink ? "Enroll & Join WhatsApp Group" : "Submit Enrollment"}
             </Button>
           </DialogFooter>
         </form>
