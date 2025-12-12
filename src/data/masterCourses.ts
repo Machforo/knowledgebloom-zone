@@ -1,5 +1,6 @@
 import agentZeroImg from "@/assets/agent-zero-workshop.jpg";
 import astroNumerologyImg from "@/assets/astro-numerology.jpg";
+import aiCourseSimpleImg from "@/assets/ai-course-simple.jpg";
 import masterMarketingImg from "@/assets/master-marketing.jpg";
 import masterTradingImg from "@/assets/master-trading.jpg";
 import masterAstrologyImg from "@/assets/master-astrology.jpg";
@@ -59,7 +60,7 @@ export const masterCourses: MasterCourse[] = [
       }
     ],
     category: "AI",
-    image: agentZeroImg,
+    image: aiCourseSimpleImg,
     price: "Free",
     duration: "4 Hours",
     date: "20/12/2025 (Saturday) & 21/12/2025 (Sunday)",
@@ -135,21 +136,14 @@ export const masterCourses: MasterCourse[] = [
     title: "Lo Shu Grid Numerology Masterclass: Unlock the Power of Numbers",
     subtitle: "Learn the ancient art of numerology and discover how numbers influence every aspect of your life.",
     description: "Learn about the hidden power of numbers and how numbers impact our lives in various ways. Our Lo Shu Grid Numerology Masterclass uses the most practical Lo Shu grid, teaching you how to interpret numerical patterns that influence key aspects of your life, including personality, relationships, and career. Perfect for both beginners and enthusiasts, this masterclass offers practical, real-world concepts of numerology.",
-    instructor: "Atharv Kumar & Amardeep Bajpai",
+    instructor: "Mohit Kumar",
     instructors: [
       {
-        name: "Atharv Kumar",
-        title: "Numerology Expert & Tech Lead",
-        bio: "Combining ancient wisdom with modern understanding, Atharv brings a unique perspective to numerology education.",
-        image: atharvImg,
-        linkedIn: "https://www.linkedin.com/in/atharv-kumar-270337222"
-      },
-      {
-        name: "Amardeep Bajpai",
-        title: "CEO, Webisdom & Spiritual Guide",
-        bio: "A visionary leader with deep knowledge of mystical sciences, helping students unlock the power of numbers.",
+        name: "Mohit Kumar",
+        title: "Numerology Expert & Spiritual Guide",
+        bio: "Mohit Kumar is a renowned numerology expert with deep knowledge of Lo Shu Grid and ancient numerological practices. He brings a unique perspective to numerology education, helping students unlock the power of numbers.",
         image: amardeepImg,
-        linkedIn: "https://www.linkedin.com/in/amardeepbajpai/"
+        linkedIn: "https://www.linkedin.com/in/mohit-kumar/"
       }
     ],
     category: "Numerology",
@@ -218,7 +212,7 @@ export const masterCourses: MasterCourse[] = [
     description: "Discover the power of AI agents without any technical background. Learn practical applications that can transform your workflow.",
     instructor: "TrainingLobe",
     category: "AI",
-    image: masterMarketingImg,
+    image: aiCourseSimpleImg,
     price: "Free",
     duration: "Self-paced",
     isComingSoon: true

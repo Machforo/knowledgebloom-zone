@@ -1,6 +1,6 @@
 import agentZeroImg from "@/assets/agent-zero-workshop.jpg";
 import astroNumerologyImg from "@/assets/astro-numerology.jpg";
-import aiCourseImg from "@/assets/ai-course.jpg";
+import aiCourseSimpleImg from "@/assets/ai-course-simple.jpg";
 import webDevCourseImg from "@/assets/web-dev-course.jpg";
 import dataAnalyticsCourseImg from "@/assets/data-analytics-course.jpg";
 import digitalMarketingImg from "@/assets/digital-marketing-blog.jpg";
@@ -24,7 +24,6 @@ export interface Course {
   fullDescription: string;
   duration: string;
   level: string;
-  lessons: number;
   rating: number;
   image: string;
   category: string;
@@ -45,9 +44,8 @@ export const courses: Course[] = [
     fullDescription: "This isn't a lecture. It's a two-day coding intensive where you leave with a deployable AI product, a clear understanding of the tech, and a strategy for using it. Whether you're building internal tools or launching a startup, this bootcamp gives you the practical skills and CEO-level thinking to succeed.",
     duration: "2 Days",
     level: "Intermediate",
-    lessons: 12,
     rating: 4.9,
-    image: agentZeroImg,
+    image: aiCourseSimpleImg,
     category: "AI & Automation",
     instructor: "Atharv Kumar & Amardeep Bajpai",
     instructors: [
@@ -92,25 +90,17 @@ export const courses: Course[] = [
     fullDescription: "Learn about the hidden power of numbers and how numbers impact our lives in various ways. Our Lo Shu Grid Numerology Course uses the most practical Lo Shu grid, teaching you how to interpret numerical patterns that influence key aspects of your life, including personality, relationships, and career. Perfect for both beginners and enthusiasts, this course offers practical, real-world concepts of numerology, helping you make informed decisions and gain deeper insights into your life's direction. Enroll today and explore how our Lo Shu grid numerology course can transform the understanding of yourself and people around you.",
     duration: "8 Weeks",
     level: "Beginner",
-    lessons: 24,
     rating: 4.8,
     image: astroNumerologyImg,
     category: "Numerology",
-    instructor: "Atharv Kumar & Amardeep Bajpai",
+    instructor: "Mohit Kumar",
     instructors: [
       {
-        name: "Atharv Kumar",
-        title: "Numerology Expert & Tech Lead",
-        bio: "Combining ancient wisdom with modern understanding, Atharv brings a unique perspective to numerology education.",
-        image: atharvImg,
-        linkedIn: "https://www.linkedin.com/in/atharv-kumar-270337222"
-      },
-      {
-        name: "Amardeep Bajpai",
-        title: "CEO, Webisdom & Spiritual Guide",
-        bio: "A visionary leader with deep knowledge of mystical sciences, helping students unlock the power of numbers.",
+        name: "Mohit Kumar",
+        title: "Numerology Expert & Spiritual Guide",
+        bio: "Mohit Kumar is a renowned numerology expert with deep knowledge of Lo Shu Grid and ancient numerological practices. He brings a unique perspective to numerology education, helping students unlock the power of numbers.",
         image: amardeepImg,
-        linkedIn: "https://www.linkedin.com/in/amardeepbajpai/"
+        linkedIn: "https://www.linkedin.com/in/mohit-kumar/"
       }
     ],
     price: "₹2,999",
@@ -141,9 +131,8 @@ export const courses: Course[] = [
     fullDescription: "Dive deep into the world of AI and Machine Learning. This comprehensive course covers neural networks, deep learning, natural language processing, and computer vision.",
     duration: "12 weeks",
     level: "Intermediate",
-    lessons: 48,
     rating: 4.9,
-    image: aiCourseImg,
+    image: aiCourseSimpleImg,
     category: "AI & ML",
     syllabus: [
       "Introduction to AI and ML Concepts",
@@ -173,7 +162,6 @@ export const courses: Course[] = [
     fullDescription: "Become a full-stack developer with this intensive bootcamp.",
     duration: "16 weeks",
     level: "Beginner",
-    lessons: 64,
     rating: 4.8,
     image: webDevCourseImg,
     category: "Web Development",
@@ -205,7 +193,6 @@ export const courses: Course[] = [
     fullDescription: "Master the art of data analysis with this comprehensive course.",
     duration: "10 weeks",
     level: "Intermediate",
-    lessons: 40,
     rating: 4.7,
     image: dataAnalyticsCourseImg,
     category: "Data Analytics",
@@ -235,7 +222,6 @@ export const courses: Course[] = [
     fullDescription: "Master digital marketing channels including SEO, social media, content marketing.",
     duration: "8 weeks",
     level: "Beginner",
-    lessons: 32,
     rating: 4.6,
     image: digitalMarketingImg,
     category: "Marketing",
@@ -264,7 +250,6 @@ export const courses: Course[] = [
     fullDescription: "Learn cloud infrastructure, serverless computing, containerization on AWS.",
     duration: "10 weeks",
     level: "Intermediate",
-    lessons: 42,
     rating: 4.8,
     image: cloudComputingImg,
     category: "Cloud & DevOps",
@@ -293,7 +278,6 @@ export const courses: Course[] = [
     fullDescription: "Learn the fundamentals of cybersecurity, including network security and ethical hacking.",
     duration: "12 weeks",
     level: "Intermediate",
-    lessons: 45,
     rating: 4.7,
     image: cybersecurityImg,
     category: "Cybersecurity",

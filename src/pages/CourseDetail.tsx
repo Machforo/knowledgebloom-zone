@@ -113,7 +113,7 @@ const CourseDetail = () => {
     learningOutcomes: isDbCourse ? (dbCourse.what_you_learn || []) : staticCourse!.learningOutcomes,
     whoIsFor: isDbCourse ? (dbCourse.who_is_for || []) : [`Beginners looking to start their career`, `Professionals wanting to upgrade their skills`, `Students seeking practical, industry-relevant knowledge`],
     rating: staticCourse?.rating || 4.8,
-    lessons: staticCourse?.lessons || 24,
+    level: staticCourse?.level || "Intermediate",
     level: staticCourse?.level || "Intermediate",
     whatsappLink: staticCourse?.whatsappLink
   };

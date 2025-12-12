@@ -8,13 +8,21 @@ import { Badge } from "@/components/ui/badge";
 import { masterCourses, categories } from "@/data/masterCourses";
 import { Link } from "react-router-dom";
 import { Clock } from "lucide-react";
+import { NotifyMeDialog } from "@/components/NotifyMeDialog";
 
 const MasterClass = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [notifyDialogOpen, setNotifyDialogOpen] = useState(false);
+  const [selectedCourseTitle, setSelectedCourseTitle] = useState("");
 
   const filteredCourses = selectedCategory === "All" 
     ? masterCourses 
     : masterCourses.filter(course => course.category === selectedCategory);
+
+  const handleNotifyClick = (courseTitle: string) => {
+    setSelectedCourseTitle(courseTitle);
+    setNotifyDialogOpen(true);
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -89,11 +97,16 @@ const MasterClass = () => {
                       <p className="mt-4 text-sm font-medium text-primary">📅 {course.date}</p>
                     )}
                   </CardContent>
-                  <CardFooter>
+                  <CardFooter className="flex gap-2">
                     {course.isComingSoon ? (
-                      <Button className="w-full" variant="outline" disabled>
-                        Coming Soon
-                      </Button>
+                      <>
+                        <Button className="flex-1" variant="outline" disabled>
+                          Coming Soon
+                        </Button>
+                        <Button className="flex-1" onClick={() => handleNotifyClick(course.title)}>
+                          Notify Me
+                        </Button>
+                      </>
                     ) : (
                       <Button asChild className="w-full" variant="outline">
                         <Link to={`/master-class/${course.id}`}>Learn More</Link>
@@ -108,6 +121,12 @@ const MasterClass = () => {
       </main>
 
       <Footer />
+      
+      <NotifyMeDialog
+        open={notifyDialogOpen}
+        onOpenChange={setNotifyDialogOpen}
+        courseTitle={selectedCourseTitle}
+      />
     </div>
   );
 };
