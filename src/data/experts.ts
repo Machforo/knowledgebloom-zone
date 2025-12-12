@@ -1,6 +1,7 @@
 import naveenImg from "@/assets/naveen-luthra.jpg";
 import narainImg from "@/assets/narain-gupta.jpg";
 import jayasudhaImg from "@/assets/jayasudha-bandi.jpg";
+import amardeepImg from "@/assets/amardeep-bajpai.jpeg";
 
 export interface Expert {
   id: string;
@@ -11,6 +12,13 @@ export interface Expert {
 }
 
 export const experts: Expert[] = [
+  {
+    id: "0",
+    name: "Amardeep Bajpai",
+    title: "CEO, Webisdom & Digital Innovation Leader",
+    image: amardeepImg,
+    bio: "A visionary leader who has scaled 5 startups to unicorns and advised 300+ global brands. Amardeep brings decades of experience in digital transformation, AI strategy, and building businesses that thrive in the digital age."
+  },
   {
     id: "1",
     name: "Mr. Naveen Luthra",

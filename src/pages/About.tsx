@@ -55,8 +55,8 @@ const About = () => {
 
               <div className="relative">
                 <img
-                  src="/placeholder.svg"
-                  alt="Founder"
+                  src={experts[0]?.image}
+                  alt="Amardeep Bajpai - Founder"
                   className="w-full h-[500px] object-cover rounded-lg shadow-2xl"
                 />
               </div>
